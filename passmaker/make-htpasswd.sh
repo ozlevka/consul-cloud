@@ -22,9 +22,9 @@ while [ "$CONTINUE" = "yes" ]; do
     ask_for_password
 
     if [ -f "/app/.htpasswd" ]; then
-        htpasswd -b /app/.htpasswd "$USER_NAME" "$FINAL_USER_PASS"
+        htpasswd -b /app/.htpasswd $USER_NAME $FINAL_USER_PASS
     else
-        htpasswd -c -b /app/.htpasswd "$USER_NAME" "$FINAL_USER_PASS"
+        htpasswd -c -b /app/.htpasswd $USER_NAME $FINAL_USER_PASS
     fi
 
     read -p "Would you like add more users yes/no: " MORE

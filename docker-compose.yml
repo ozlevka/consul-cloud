@@ -8,5 +8,5 @@ services:
     network_mode: "host"
 
   nginx:
-    image: nginx
+    image: nginx:current
     network_mode: "host"
