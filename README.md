@@ -1,2 +1,2 @@
-# consul-cloud
-Make docker image for run in cloud 
+### Make any service in cloud cheap (spot) and scalable
+
