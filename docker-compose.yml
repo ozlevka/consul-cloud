@@ -4,7 +4,7 @@ version: "3.6"
 services:
   consul:
     image: ozlevka/consul-cloud:work-1
-    command: -bind=10.240.0.2 -bootstrap-expect=1 -server -ui -client=0.0.0.0
+    command: -bind=192.168.1.108 -bootstrap-expect=1 -server -ui -client=0.0.0.0
     network_mode: "host"
 
   nginx:

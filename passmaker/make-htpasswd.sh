@@ -19,12 +19,11 @@ function ask_for_user() {
 CONTINUE="yes"
 while [ "$CONTINUE" = "yes" ]; do
     ask_for_user
-    ask_for_password
 
     if [ -f "/app/.htpasswd" ]; then
-        htpasswd -b /app/.htpasswd $USER_NAME $FINAL_USER_PASS
+        `htpasswd /app/.htpasswd $USER_NAME`
     else
-        htpasswd -c -b /app/.htpasswd $USER_NAME $FINAL_USER_PASS
+        `htpasswd -c /app/.htpasswd $USER_NAME`
     fi
 
     read -p "Would you like add more users yes/no: " MORE
