@@ -21,7 +21,7 @@ while [ "$CONTINUE" = "yes" ]; do
     ask_for_user
     ask_for_password
 
-    if [ -f ".htpasswd" ]; then
+    if [ -f "/app/.htpasswd" ]; then
         htpasswd -b /app/.htpasswd "$USER_NAME" "$FINAL_USER_PASS"
     else
         htpasswd -c -b /app/.htpasswd "$USER_NAME" "$FINAL_USER_PASS"
