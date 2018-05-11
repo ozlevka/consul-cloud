@@ -103,3 +103,7 @@ ENV/
 
 # Ignore Idea settings
 .idea/*
+
+
+# goole cloud credentials
+google.json
