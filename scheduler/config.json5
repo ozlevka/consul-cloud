@@ -1,0 +1,26 @@
+{
+    consul: "{{ .CONSUL_ADDRESS | default "localhost" }}:{{ .CONSUL_PORT | default "8500" }}",
+    jobs: [
+        {
+            name: "scheduler",
+            port: 1235,
+            restarts: "unlimited",
+            health: {
+                exec: "echo 'Hello'",
+                interval: 10,
+                ttl: 30,
+                timeout: "20s"
+            },
+            when: {
+                source: "watch.consul",
+                once: "healthy"
+            }
+        }
+    ],
+    watches: [
+        {
+            name: "consul",
+            interval: 5
+        }
+    ]
+}
