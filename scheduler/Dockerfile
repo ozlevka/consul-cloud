@@ -17,7 +17,7 @@ RUN apt-get update && apt-get install -y wget curl zip unzip tar build-essential
 
 COPY scripts/ /scripts
 COPY ansible/ /ansible
-COPY config.json5 /
+COPY config.json5 /app
 
 RUN pip install -r /ansible/dependencies.txt
 
