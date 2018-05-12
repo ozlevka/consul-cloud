@@ -12,5 +12,5 @@ services:
     network_mode: "host"
 
   scheduler:
-    image: ozlevka/cloud-scheduler:work-1
+    image: cloud-scheduler:current
     network_mode: host
