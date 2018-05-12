@@ -6,7 +6,7 @@
             port: 1235,
             restarts: "unlimited",
             health: {
-                exec: "echo 'Hello'",
+                exec: "python /scripts/scheduler.py",
                 interval: 10,
                 ttl: 30,
                 timeout: "20s"
