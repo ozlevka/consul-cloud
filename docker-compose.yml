@@ -16,4 +16,5 @@ services:
     volumes:
       - /usr/bin/docker:/usr/bin/docker
       - /var/run/docker.sock:/var/run/docker.sock
+      - /home/ozlevka/jenkins-home:/var/jenkins-home
     network_mode: host
