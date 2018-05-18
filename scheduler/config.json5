@@ -4,7 +4,7 @@
         {
             name: "scheduler",
             port: 8080,
-            exec: "java -Dhudson.model.DirectoryBrowserSupport.CSP= -Dmail.smtp.starttls.enable=true -jar /app/jenkins.war"
+            exec: "java -Dhudson.model.DirectoryBrowserSupport.CSP= -Dmail.smtp.starttls.enable=true -jar /app/jenkins.war",
             restarts: "unlimited",
             health: {
                 exec: 'curl -sL localhost:8080 -o /dev/null --max-time 15',
