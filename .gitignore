@@ -107,3 +107,6 @@ ENV/
 
 # goole cloud credentials
 google.json
+
+# credentials file 
+.htpasswd
