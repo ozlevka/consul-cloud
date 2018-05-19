@@ -21,6 +21,6 @@ COPY config.json5 /app
 
 RUN pip install -r /ansible/dependencies.txt && mkdir -p /var/jenkins-home
 
-ENV JENKINS_HOME=/var/jenkins_home
+ENV JENKINS_HOME=/var/jenkins-home
 
 ENTRYPOINT ["/usr/bin/containerpilot", "-config", "config.json5"]
