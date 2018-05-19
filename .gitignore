@@ -107,6 +107,7 @@ ENV/
 
 # goole cloud credentials
 google.json
+gce.ini
 
 # credentials file 
 .htpasswd

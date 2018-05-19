@@ -1,21 +1,23 @@
 ---
 # main playbook for running all
 - name: Create instance(s)
-  hosts: localhost
+  hosts: all
   connection: local
   gather_facts: no
 
   vars:
     credentials_file: ./google.json
-    machine_type: f1-micro
+    machine_type: g1-small
     image: ubuntu-1604-xenial-v20180509
     compute_zone: us-central1-f
+    instance_names: ["manager-1"]
+    spot: true
 
   tasks:
 
    - name: Launch instances
      gce:
-         instance_names: help-1
+         instance_names: "{{ ','.join(instance_names) }}"
          machine_type: "{{ machine_type }}"
          image: "{{ image }}"
          service_account_email: "ansible@{{ project }}.iam.gserviceaccount.com"
@@ -23,4 +25,14 @@
          project_id: "{{ project }}"
          zone: "{{ compute_zone }}"
          state: "{{ state }}"
+         preemptible: "{{ spot }}"
+     delegate_to: localhost
+     register: gce_result
+
+   - name: Add created instances to inventory
+     add_host:
+       name: "{{ item.name }}"
+       ansible_host: "{{ item.public_ip }}"
+     with_items: "{{ gce_result.instance_data }}"
+
 
