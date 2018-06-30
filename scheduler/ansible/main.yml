@@ -1,7 +1,7 @@
 ---
 # main playbook for running all
 - name: Create instance(s)
-  hosts: localhosts
+  hosts: all
   connection: local
   gather_facts: no
 
