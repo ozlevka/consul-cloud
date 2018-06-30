@@ -1,7 +1,7 @@
 ---
 # main playbook for running all
 - name: Create instance(s)
-  hosts: all
+  hosts: localhosts
   connection: local
   gather_facts: no
 
@@ -9,7 +9,7 @@
     credentials_file: ./google.json
     machine_type: g1-small
     image: ubuntu-1604-xenial-v20180509
-    compute_zone: us-central1-f
+    compute_zone: us-central1-c
     instance_names: ["manager-1"]
     spot: true
 
@@ -29,10 +29,10 @@
      delegate_to: localhost
      register: gce_result
 
-   - name: Add created instances to inventory
-     add_host:
-       name: "{{ item.name }}"
-       ansible_host: "{{ item.public_ip }}"
-     with_items: "{{ gce_result.instance_data }}"
+#   - name: Add created instances to inventory
+#     add_host:
+#       name: "{{ item.name }}"
+#       ansible_host: "{{ item.public_ip }}"
+#     with_items: "{{ gce_result.instance_data }}"
 
 
