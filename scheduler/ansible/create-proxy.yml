@@ -1,0 +1,10 @@
+---
+  - name: make proxy
+    hosts: all
+    become: true
+    tasks:
+      - name: Install docker and docker compose
+        script: ../../install-docker-ubuntu.sh
+
+      - name: Run proxy
+        shell: docker run -d -p 8542:3111 ozlevka/squid-no-auth

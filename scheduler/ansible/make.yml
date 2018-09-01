@@ -1,7 +1,7 @@
 ---
 # main playbook for running all
 - name: Create instance(s)
-  hosts: localhosts
+  hosts: localhost
   connection: local
   gather_facts: no
 
@@ -29,10 +29,5 @@
      delegate_to: localhost
      register: gce_result
 
-#   - name: Add created instances to inventory
-#     add_host:
-#       name: "{{ item.name }}"
-#       ansible_host: "{{ item.public_ip }}"
-#     with_items: "{{ gce_result.instance_data }}"
 
 

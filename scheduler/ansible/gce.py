@@ -385,7 +385,7 @@ class GceInventory(object):
         else:
             ssh_host = inst.public_ips[0] if len(inst.public_ips) >= 1 else inst.private_ips[0]
 
-        return {
+        node_dict = {
             'gce_uuid': inst.uuid,
             'gce_id': inst.id,
             'gce_image': inst.image,
@@ -403,6 +403,13 @@ class GceInventory(object):
             # Hosts don't have a public name, so we add an IP
             'ansible_ssh_host': ssh_host
         }
+
+        if self.config.has_option('inventory', 'ansible_ssh_private_key_file'):
+            node_dict['ansible_ssh_private_key_file'] = self.config.get('inventory', 'ansible_ssh_private_key_file')
+        if self.config.has_option('inventory', 'ansible_ssh_user'):
+            node_dict['ansible_ssh_user'] = self.config.get('inventory', 'ansible_ssh_user')
+
+        return node_dict
 
     def load_inventory_from_cache(self):
         ''' Loads inventory from JSON on disk. '''
