@@ -1,6 +1,4 @@
 #!/usr/bin/env python
-
-
 # Copyright 2013 Google Inc.
 #
 # This file is part of Ansible
